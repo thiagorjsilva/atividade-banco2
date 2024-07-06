@@ -1,0 +1,25 @@
+CREATE DATABASE LojaDeLivros;
+USE LojaDeLivros;
+CREATE TABLE Autores (
+    ID INT PRIMARY KEY,
+    Nome VARCHAR(100),
+    Nacionalidade VARCHAR(50)
+);
+
+CREATE TABLE Livros (
+    ID INT PRIMARY KEY,
+    Titulo VARCHAR(100),
+    AnoPublicacao YEAR,
+    Preco DECIMAL(5,2),
+    ID_Autor INT
+INSERT INTO Autores (ID, Nome, Nacionalidade) VALUES
+(1, 'J.K. Rowling', 'Inglesa'),
+(2, 'George Orwell', 'Britânica');
+
+INSERT INTO Livros (ID, Titulo, AnoPublicacao, Preco, ID_Autor) VALUES
+(1, 'Harry Potter e a Pedra Filosofal', 1997, 19.99, 1),
+(2, '1984', 1949, 14.99, 2);
+
+SELECT Livros.Titulo, Autores.Nome AS Autor, Autores.Nacionalidade, Livros.AnoPublicacao, Livros.Preco
+FROM Livros
+JOIN Autores ON Livros.ID_Autor = Autores.ID;
